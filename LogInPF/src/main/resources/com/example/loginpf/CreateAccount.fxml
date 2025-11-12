@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="createPane" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.loginpf.Controllers.CreateAccountController" style="-fx-background-color: #F5F7FA;">
+   <children>
+      <AnchorPane fx:id="anchorContainer" prefHeight="500.0" prefWidth="400.0" AnchorPane.topAnchor="50.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" style="-fx-background-color: #ECEFF3; -fx-background-radius: 12; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.06), 12, 0, 0, 2);">
+         <children>
+            <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#volverALogin" text="Volver" style="-fx-background-color: #4B5563; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 10;" />
+
+            <Label layoutX="76.0" layoutY="70.0" style="-fx-font-weight: bold; -fx-text-fill: #0B0F12;" text="Role:" />
+            <ComboBox fx:id="cmbRole" layoutX="179.0" layoutY="66.0" AnchorPane.leftAnchor="179.0" AnchorPane.rightAnchor="30.0" promptText="Seleccione rol" />
+
+            <Label layoutX="76.0" layoutY="111.0" style="-fx-font-weight: bold; -fx-text-fill: #0B0F12;" text="Username:" />
+            <TextField fx:id="txtCreateUsername" alignment="CENTER" layoutX="179.0" layoutY="107.0" AnchorPane.leftAnchor="179.0" AnchorPane.rightAnchor="30.0" promptText="Ingrese Username" />
+
+            <Label layoutX="76.0" layoutY="159.0" style="-fx-font-weight: bold; -fx-text-fill: #0B0F12;" text="Password:" />
+            <TextField fx:id="txtCreatePassword" alignment="CENTER" layoutX="179.0" layoutY="155.0" AnchorPane.leftAnchor="179.0" AnchorPane.rightAnchor="30.0" promptText="Ingrese una constraseña" />
+
+            <Label layoutX="53.0" layoutY="223.0" style="-fx-font-weight: bold; -fx-text-fill: #0B0F12;" text="Confirm Password:" />
+            <PasswordField fx:id="txtConfirmPassword" alignment="CENTER" layoutX="179.0" layoutY="219.0" AnchorPane.leftAnchor="179.0" AnchorPane.rightAnchor="30.0" promptText="Confirme la contraseña" />
+
+            <Label fx:id="lblAccountType" layoutX="76.0" layoutY="267.0" style="-fx-font-weight: bold; -fx-text-fill: #0B0F12;" text="Account Type:" />
+            <ComboBox fx:id="cmbAccountType" layoutX="179.0" layoutY="263.0" AnchorPane.leftAnchor="179.0" AnchorPane.rightAnchor="30.0" promptText="Seleccione tipo de cuenta" />
+
+            <AnchorPane layoutY="-1.0" prefHeight="81.0" prefWidth="408.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+               <children>
+                  <Label fx:id="lblTitle" layoutX="75.0" layoutY="21.0" text="Creacion de Usuario" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #0B0F12;" />
+               </children>
+            </AnchorPane>
+            <Button fx:id="btnCreateUser" layoutX="148.0" layoutY="358.0" mnemonicParsing="false" onAction="#onCreateUser" text="Crear usuario" style="-fx-background-color: #4B5563; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 10;" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

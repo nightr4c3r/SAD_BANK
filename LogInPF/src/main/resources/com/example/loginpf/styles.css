@@ -1,0 +1,226 @@
+
+/* Global application stylesheet for SAD Bank
+   Focus: professional grey theme, readable dark text on light backgrounds */
+
+/* Color palette (lookups) */
+.root {
+    -brand-primary: #4B5563;          /* Gray 600 */
+    -brand-primary-dark: #374151;     /* Gray 700 */
+    -bg-light: #F5F7FA;               /* App background */
+    -bg-card: #ECEFF3;                /* Cards and panels */
+    -bg-panel-dark: #2F343C;          /* Optional dark panel */
+    -fg: #0B0F12;                     /* Primary text (near black) */
+    -fg-muted: #4B5563;               /* Secondary text */
+    -fg-invert: #FFFFFF;              /* Text on dark bg */
+    -border: #D1D5DB;                 /* Neutral border */
+    -row-odd: #F1F3F7;                /* Table striping */
+}
+
+/* Utility containers */
+.app-root {
+    -fx-background-color: -bg-light;
+}
+.card, .panel {
+    -fx-background-color: -bg-card;
+    -fx-background-radius: 12;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.06), 12, 0, 0, 2);
+}
+
+/* Typography defaults */
+.label {
+    -fx-font-size: 13px;
+    -fx-text-fill: #0B0F12;
+}
+.heading {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0B0F12;
+}
+
+/* Buttons */
+.button {
+    -fx-background-color: -brand-primary;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 10;
+    -fx-cursor: hand;
+}
+.button:hover { -fx-background-color: -brand-primary-dark; }
+.button:default { -fx-background-color: -brand-primary; }
+
+/* Inputs */
+.text-field, .password-field, .text-area, .combo-box-base {
+    -fx-background-color: white;
+    -fx-text-fill: #0B0F12;
+    -fx-prompt-text-fill: #6B7280;
+    -fx-background-radius: 8;
+    -fx-border-color: -border;
+    -fx-border-radius: 8;
+}
+.combo-box-base .text { -fx-fill: #0B0F12; }
+.list-view .list-cell { -fx-text-fill: #0B0F12; }
+.list-view .list-cell:filled:selected, .list-view .list-cell:filled:selected:hover {
+    -fx-background-color: -brand-primary;
+    -fx-text-fill: white;
+}
+
+/* Hyperlinks */
+.hyperlink { -fx-text-fill: -brand-primary; }
+.hyperlink:hover { -fx-underline: true; }
+
+/* ========== TABLE STYLES - CRITICAL FIX ========== */
+
+/* Base table styling */
+.table-view {
+    -fx-background-color: white;
+    -fx-border-color: #D1D5DB;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-control-inner-background: white;
+}
+
+/* Column headers */
+.table-view .column-header-background {
+    -fx-background-color: #E5E7EB;
+    -fx-background-radius: 8 8 0 0;
+}
+
+.table-view .column-header {
+    -fx-size: 34px;
+    -fx-background-color: #E5E7EB;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #0B0F12;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+}
+
+.table-view .filler {
+    -fx-background-color: #E5E7EB;
+}
+
+/* Table cells - FORCE BLACK TEXT */
+.table-view .table-cell {
+    -fx-text-fill: #000000;
+    -fx-font-size: 13px;
+    -fx-alignment: CENTER_LEFT;
+}
+
+/* Inner text nodes in cells */
+.table-view .table-cell .text {
+    -fx-fill: #000000 !important;
+    -fx-font-smoothing-type: lcd;
+}
+
+/* Table rows */
+.table-row-cell {
+    -fx-background-color: white;
+    -fx-cell-size: 28px;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #F9FAFB;
+}
+
+.table-row-cell:even {
+    -fx-background-color: white;
+}
+
+/* Selected rows */
+.table-row-cell:selected {
+    -fx-background-color: #4B5563;
+}
+
+.table-row-cell:selected .table-cell {
+    -fx-text-fill: white;
+    -fx-background-color: #4B5563;
+}
+
+.table-row-cell:selected .table-cell .text {
+    -fx-fill: white !important;
+}
+
+/* Hover effect */
+.table-row-cell:hover {
+    -fx-background-color: #F3F4F6;
+}
+
+.table-row-cell:selected:hover {
+    -fx-background-color: #374151;
+}
+
+/* Placeholder for empty tables */
+.table-view .placeholder .label {
+    -fx-text-fill: #6B7280;
+}
+
+/* ========== SPECIFIC TABLE OVERRIDES ========== */
+
+/* Admin tables - explicit black text */
+#tblClients .table-cell,
+#tblCashiers .table-cell,
+#tblAdmins .table-cell {
+    -fx-text-fill: #000000;
+}
+
+#tblClients .table-cell .text,
+#tblCashiers .table-cell .text,
+#tblAdmins .table-cell .text {
+    -fx-fill: #000000 !important;
+}
+
+#tblClients .column-header .label,
+#tblCashiers .column-header .label,
+#tblAdmins .column-header .label {
+    -fx-text-fill: #0B0F12;
+}
+
+/* Selected rows in admin tables */
+#tblClients .table-row-cell:selected .table-cell,
+#tblCashiers .table-row-cell:selected .table-cell,
+#tblAdmins .table-row-cell:selected .table-cell {
+    -fx-text-fill: white;
+}
+
+#tblClients .table-row-cell:selected .table-cell .text,
+#tblCashiers .table-row-cell:selected .table-cell .text,
+#tblAdmins .table-row-cell:selected .table-cell .text {
+    -fx-fill: white !important;
+}
+
+/* Accounts table */
+#tblAccounts .table-cell {
+    -fx-text-fill: #000000;
+}
+
+#tblAccounts .table-cell .text {
+    -fx-fill: #000000 !important;
+}
+
+/* ========== END TABLE STYLES ========== */
+
+/* Optional dark panel utility */
+.panel-dark {
+    -fx-background-color: -bg-panel-dark;
+}
+
+.panel-dark .label {
+    -fx-text-fill: -fg-invert;
+}
+
+.panel-dark .text-field,
+.panel-dark .password-field,
+.panel-dark .text-area {
+    -fx-text-fill: white;
+}
+
+/* Alerts (dialog content) */
+.dialog-pane {
+    -fx-font-size: 13px;
+}
+
+.dialog-pane:header .header-panel .label {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}

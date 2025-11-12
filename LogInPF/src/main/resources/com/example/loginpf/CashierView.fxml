@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.loginpf.Controllers.CashierController" style="-fx-background-color: #F5F7FA;">
+    <children>
+        <Label text="SAD Bank - Caja" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="12.0" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #0B0F12;">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Label>
+        <Button text="Cerrar sesión" onAction="#onLogout" prefHeight="30.0" prefWidth="120.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="12.0" style="-fx-background-color: #4B5563; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 10;" />
+
+        <!-- Left: Clients table -->
+        <TableView fx:id="tblClients" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="52.0" AnchorPane.bottomAnchor="12.0" prefWidth="360.0" style="-fx-control-inner-background: white; -fx-background-color: transparent; -fx-selection-bar: #DDE3EA; -fx-selection-bar-non-focused: #DDE3EA;">
+            <columns>
+                <TableColumn fx:id="colAccount" text="Cuenta" prefWidth="120.0" />
+                <TableColumn fx:id="colUsername" text="Usuario" prefWidth="140.0" />
+                <TableColumn fx:id="colId" text="ID" prefWidth="100.0" />
+            </columns>
+        </TableView>
+
+        <!-- Right: Details and actions -->
+        <AnchorPane AnchorPane.leftAnchor="384.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="52.0" AnchorPane.bottomAnchor="12.0" style="-fx-background-color: #ECEFF3; -fx-background-radius: 12; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.06), 12, 0, 0, 2);">
+            <children>
+                <Label text="Cliente seleccionado" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="12.0" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #0B0F12;" />
+                <Label fx:id="lblSelAccount" text="Cuenta: -" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="44.0" style="-fx-text-fill: #0B0F12;" />
+                <Label fx:id="lblSelUser" text="Usuario: -" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="72.0" style="-fx-text-fill: #0B0F12;" />
+                <Label fx:id="lblSelBalance" text="Saldo: -" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="100.0" style="-fx-text-fill: #0B0F12;" />
+
+                <Label text="Cuenta del cliente" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="126.0" />
+                <ComboBox fx:id="cmbAccounts" promptText="Seleccione cuenta" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="148.0" />
+
+                <Separator AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="184.0" />
+
+                <Label text="Monto ($)" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="198.0" />
+                <TextField fx:id="txtAmount" promptText="0.00" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="220.0" />
+
+                <Label text="Cuenta destino (para transferir)" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="258.0" />
+                <TextField fx:id="txtToAccount" promptText="0001" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="280.0" />
+
+                <Label text="Mensaje (opcional)" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="318.0" />
+                <TextArea fx:id="txtMessage" prefHeight="80.0" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="340.0" />
+
+                <HBox spacing="12.0" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="16.0" AnchorPane.bottomAnchor="16.0">
+                    <children>
+                        <Button text="Depositar" onAction="#onDeposit" style="-fx-background-color: #4B5563; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 10;" />
+                        <Button text="Retirar" onAction="#onWithdraw" style="-fx-background-color: #4B5563; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 10;" />
+                        <Button text="Transferir" onAction="#onTransfer" style="-fx-background-color: #4B5563; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 10;" />
+                    </children>
+                </HBox>
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>

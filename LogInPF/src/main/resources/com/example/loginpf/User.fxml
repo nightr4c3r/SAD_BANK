@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="userPane" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.loginpf.Controllers.UserController" style="-fx-background-color: #F5F7FA;">
+    <children>
+        <Label fx:id="lblMessage" layoutX="220.0" layoutY="16.0" prefHeight="24.0" prefWidth="360.0" text="Bienvenido a la vista de usuario" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="120.0" AnchorPane.topAnchor="16.0" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #0B0F12;" />
+        <Button text="Cerrar sesión" onAction="#onLogout" layoutX="480.0" layoutY="12.0" prefHeight="30.0" prefWidth="110.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="12.0" style="-fx-background-color: #4B5563; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 10;" />
+      <AnchorPane fx:id="elements" prefWidth="200.0" AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" style="-fx-background-color: #ECEFF3; -fx-background-radius: 0; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.06), 12, 0, 0, 2);">
+         <children>
+            <AnchorPane prefHeight="75.0" prefWidth="200.0" AnchorPane.topAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+               <children>
+                  <Label fx:id="lblChoose" layoutX="20.0" layoutY="30.0" text="¿Qué deseas hacer hoy?" style="-fx-text-fill: #0B0F12; -fx-font-size: 13px; -fx-font-weight: bold;">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <Button fx:id="btnTransferencia" layoutX="29.0" layoutY="134.0" mnemonicParsing="false" onAction="#onTransferencia" prefHeight="35.0" prefWidth="142.0" text="Transferir" style="-fx-background-color: #4B5563; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 10;" />
+            <Button fx:id="btnDepositar" layoutX="29.0" layoutY="228.0" mnemonicParsing="false" onAction="#onDepositar" prefHeight="35.0" prefWidth="142.0" text="Depositar" style="-fx-background-color: #4B5563; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 10;" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="paneTransferencia" layoutY="74.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="60.0" style="-fx-background-color: #ECEFF3; -fx-background-radius: 12; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.06), 12, 0, 0, 2);">
+         <children>
+            <HBox layoutX="54.0" layoutY="24.0" prefHeight="28.0" prefWidth="450.0" spacing="10.0">
+               <children>
+                  <Label text="Cuenta origen:" style="-fx-text-fill: #0B0F12; -fx-font-weight: bold;" />
+                  <ComboBox fx:id="cmbAccount" promptText="Seleccione cuenta" prefWidth="280.0" />
+               </children>
+            </HBox>
+            <HBox layoutX="54.0" layoutY="80.0" prefHeight="16.0" prefWidth="300.0">
+               <children>
+                  <Label fx:id="lblAccountType" text="Tipo de cuenta:" style="-fx-text-fill: #0B0F12;" />
+               </children>
+            </HBox>
+            <HBox layoutX="54.0" layoutY="121.0" prefHeight="16.0" prefWidth="300.0">
+               <children>
+                  <Label fx:id="lblAccountNumber" text="Numero de cuenta:" style="-fx-text-fill: #0B0F12;" />
+               </children>
+            </HBox>
+            <HBox layoutX="54.0" layoutY="220.0" prefHeight="16.0" prefWidth="300.0">
+               <children>
+                  <Label fx:id="lblCash" text="Saldo:" style="-fx-text-fill: #0B0F12;" />
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+    </children>
+</AnchorPane>
