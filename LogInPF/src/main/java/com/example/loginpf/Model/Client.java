@@ -9,12 +9,12 @@ public class Client {
     private String password;
     private String id;
 
-    // Legacy single-account fields (kept for backward compatibility in UI/controllers)
+
     private String account;
     private Double cash;
     private AccountType accountType = AccountType.SAVINGS;
 
-    // Multi-account support
+
     private final ObservableList<BankAccount> accounts = FXCollections.observableArrayList();
     private String primaryAccountNumber;
 
@@ -31,12 +31,12 @@ public class Client {
         this.username = username;
         this.password = password;
         this.id = id;
-        // Initialize primary account from legacy fields
+
         String accNum = account != null ? account : generateAccount();
         BankAccount acc = new BankAccount(accNum, type == null ? AccountType.SAVINGS : type, cash == null ? 0.0 : cash);
         this.accounts.add(acc);
         this.primaryAccountNumber = accNum;
-        // Keep legacy fields in sync
+
         this.account = accNum;
         this.cash = acc.getBalance();
         this.accountType = acc.getType();
@@ -49,7 +49,7 @@ public class Client {
         BankAccount acc = new BankAccount(accNum, AccountType.SAVINGS, 0.0);
         this.accounts.add(acc);
         this.primaryAccountNumber = accNum;
-        // Legacy sync
+
         this.account = accNum;
         this.cash = 0.0;
         this.accountType = AccountType.SAVINGS;
@@ -60,7 +60,7 @@ public class Client {
         return String.format("%04d", accountCounter);
     }
 
-    // Accounts API
+
     public ObservableList<BankAccount> getAccounts() { return accounts; }
 
     public BankAccount getPrimaryAccount() {
@@ -104,7 +104,7 @@ public class Client {
     public String getId() { return id; }
     public void setId(String id) { this.id = id; }
 
-    // Backward-compatible accessors mapped to primary account
+
     public String getAccount() { return getPrimaryAccount() != null ? getPrimaryAccount().getNumber() : (account == null ? "" : account); }
     public void setAccount(String account) { this.primaryAccountNumber = account; this.account = account; }
 

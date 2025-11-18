@@ -120,7 +120,7 @@ public class LogInController implements Initializable {
                 return;
             }
 
-            // selected role already captured above
+
             Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
 
             String userType = selectedRole != null ? selectedRole.toString() : "";
@@ -155,7 +155,7 @@ public class LogInController implements Initializable {
 
             UserController userController = loader.getController();
 
-            // If role is Client, pass the full Client object; otherwise, just set welcome text
+
             Client loggedClient = UserRepository.obtenerUsuario(userName);
             if (loggedClient != null) {
                 userController.setLoggedInClient(loggedClient);
@@ -163,7 +163,7 @@ public class LogInController implements Initializable {
             userController.setUserInfo(userName, userType);
 
             Scene scene = new Scene(root, 600, 600);
-            // Apply global stylesheet for consistent readable UI
+
             String css = com.example.loginpf.App.class.getResource("styles.css").toExternalForm();
             if (!scene.getStylesheets().contains(css)) {
                 scene.getStylesheets().add(css);

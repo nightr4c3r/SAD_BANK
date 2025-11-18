@@ -26,7 +26,7 @@ import java.util.ResourceBundle;
 
 public class AdminController implements Initializable {
 
-    // Clients tab
+
     @FXML private TableView<Client> tblClients;
     @FXML private TableColumn<Client, String> colCAccount;
     @FXML private TableColumn<Client, String> colCUsername;
@@ -36,7 +36,7 @@ public class AdminController implements Initializable {
     @FXML private TableColumn<Client, AccountType> colCType;
     @FXML private Button btnRemoveClient;
     @FXML private Button btnPromoteClient;
-    // New controls for Client management (dropdown + form)
+
     @FXML private ComboBox<Client> cmbClients;
     @FXML private TextField txtCUsername;
     @FXML private PasswordField txtCPassword;
@@ -46,17 +46,17 @@ public class AdminController implements Initializable {
     @FXML private TextField txtCBalance;
     @FXML private ComboBox<AccountType> cmbCType;
 
-    // Cashiers tab
+
     @FXML private TableView<StaffCashier> tblCashiers;
     @FXML private TableColumn<StaffCashier, String> colCashierUser;
     @FXML private Button btnRemoveCashier;
     @FXML private Button btnPromoteCashier;
-    // New controls for Cashier management (dropdown + form)
+
     @FXML private ComboBox<StaffCashier> cmbCashiers;
     @FXML private TextField txtCashierUser;
     @FXML private PasswordField txtCashierPassword;
 
-    // Admins tab
+
     @FXML private TableView<Admin> tblAdmins;
     @FXML private TableColumn<Admin, String> colAdminUser;
     @FXML private Button btnRemoveAdmin;
@@ -69,7 +69,7 @@ public class AdminController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         UserRepository.cargarUsuariosDePrueba();
 
-        // Bind client columns
+
         colCAccount.setCellValueFactory(new PropertyValueFactory<>("account"));
         colCUsername.setCellValueFactory(new PropertyValueFactory<>("username"));
         colCName.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -77,7 +77,7 @@ public class AdminController implements Initializable {
         colCBalance.setCellValueFactory(new PropertyValueFactory<>("cash"));
         colCType.setCellValueFactory(new PropertyValueFactory<>("accountType"));
 
-        // Make tables read-only (no in-place editing)
+
         tblClients.setEditable(false);
         colCAccount.setEditable(false);
         colCUsername.setEditable(false);
@@ -85,7 +85,7 @@ public class AdminController implements Initializable {
         colCId.setEditable(false);
         colCBalance.setEditable(false);
         colCType.setEditable(false);
-        // Force black text in all client table cells
+
         colCAccount.setCellFactory(col -> new TableCell<>() {
             @Override protected void updateItem(String item, boolean empty) {
                 super.updateItem(item, empty);
@@ -133,14 +133,14 @@ public class AdminController implements Initializable {
             }
         });
 
-        // Load data
+
         clients = UserRepository.obtenerTodosLosUsuarios();
         cashiers = UserRepository.obtenerTodosLosCashiers();
         admins = UserRepository.obtenerTodosLosAdmins();
 
         tblClients.setItems(clients);
 
-        // Setup clients dropdown and form
+
         if (cmbClients != null) {
             cmbClients.setItems(clients);
             cmbClients.setConverter(new StringConverter<>() {
@@ -153,7 +153,6 @@ public class AdminController implements Initializable {
             cmbCType.setConverter(new AccountTypeStringConverter());
         }
 
-        // Cashiers table
         colCashierUser.setCellValueFactory(new PropertyValueFactory<>("username"));
         tblCashiers.setItems(cashiers);
         tblCashiers.setEditable(false);
@@ -165,7 +164,7 @@ public class AdminController implements Initializable {
             }
         });
 
-        // Setup cashiers dropdown
+
         if (cmbCashiers != null) {
             cmbCashiers.setItems(cashiers);
             cmbCashiers.setConverter(new StringConverter<>() {
@@ -174,7 +173,7 @@ public class AdminController implements Initializable {
             });
         }
 
-        // Admins table
+
         colAdminUser.setCellValueFactory(new PropertyValueFactory<>("username"));
         tblAdmins.setItems(admins);
         tblAdmins.setEditable(false);
@@ -186,7 +185,7 @@ public class AdminController implements Initializable {
             }
         });
 
-        // Disable action buttons when nothing is selected
+
         if (btnRemoveClient != null) btnRemoveClient.disableProperty().bind(tblClients.getSelectionModel().selectedItemProperty().isNull());
         if (btnPromoteClient != null) btnPromoteClient.disableProperty().bind(tblClients.getSelectionModel().selectedItemProperty().isNull());
         if (btnRemoveCashier != null) btnRemoveCashier.disableProperty().bind(tblCashiers.getSelectionModel().selectedItemProperty().isNull());
@@ -278,7 +277,7 @@ public class AdminController implements Initializable {
     private void info(String msg) { Alert a = new Alert(Alert.AlertType.INFORMATION, msg, ButtonType.OK); a.setHeaderText(null); a.showAndWait(); }
     private void warn(String msg) { Alert a = new Alert(Alert.AlertType.WARNING, msg, ButtonType.OK); a.setHeaderText(null); a.showAndWait(); }
 
-    // ---- Helper refreshers ----
+
     private void refreshClientsViews() {
         tblClients.refresh();
         if (cmbClients != null) {
@@ -294,7 +293,7 @@ public class AdminController implements Initializable {
         }
     }
 
-    // ---- New Handlers for dropdowns and forms ----
+
     @FXML
     private void onLoadClientFromDropdown() {
         Client c = cmbClients == null ? null : cmbClients.getValue();
@@ -415,7 +414,7 @@ public class AdminController implements Initializable {
             AnchorPane root = loader.load();
             Stage stage = (Stage) tblClients.getScene().getWindow();
             Scene scene = new Scene(root, 600, 600);
-            // Apply global stylesheet for consistent readable UI when returning to login
+
             String css = com.example.loginpf.App.class.getResource("styles.css").toExternalForm();
             if (!scene.getStylesheets().contains(css)) {
                 scene.getStylesheets().add(css);

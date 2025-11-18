@@ -57,7 +57,7 @@ public class Cashier {
         return Result.ok(msg);
     }
 
-    // Legacy overloads (operate on primary account of the client)
+
     public static Result deposit(Client user, double amount) {
         if (user == null) return Result.error("Usuario no válido");
         return deposit(user.getPrimaryAccount(), amount);

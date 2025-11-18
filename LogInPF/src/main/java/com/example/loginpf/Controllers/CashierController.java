@@ -41,14 +41,14 @@ public class CashierController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // Ensure demo users exist
+
         UserRepository.cargarUsuariosDePrueba();
 
         colAccount.setCellValueFactory(new PropertyValueFactory<>("account"));
         colUsername.setCellValueFactory(new PropertyValueFactory<>("username"));
         colId.setCellValueFactory(new PropertyValueFactory<>("id"));
 
-        // Read-only cells; let CSS control text color for normal and selected states
+
         colAccount.setCellFactory(col -> new TableCell<>() {
             @Override protected void updateItem(String item, boolean empty) {
                 super.updateItem(item, empty);

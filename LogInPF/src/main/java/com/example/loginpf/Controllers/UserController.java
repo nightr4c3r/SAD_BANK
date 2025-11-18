@@ -62,7 +62,7 @@ public class UserController implements Initializable {
         if (lblMessage != null) {
             lblMessage.setText("¡Bienvenido a SAD Bank!");
         }
-        // cargar datos demo si es la primera vez
+
         UserRepository.cargarUsuariosDePrueba();
     }
 

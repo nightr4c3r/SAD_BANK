@@ -38,19 +38,19 @@ public class CreateAccountController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // Populate role choices
+
         cmbRole.setItems(FXCollections.observableArrayList("Client", "Admin", "Cashier"));
         cmbRole.getSelectionModel().selectFirst();
 
-        // Populate account types
+
         cmbAccountType.setItems(FXCollections.observableArrayList("Savings", "Checking", "Business"));
         cmbAccountType.getSelectionModel().select("Savings");
 
-        // Show/hide account type based on role
+
         cmbRole.getSelectionModel().selectedItemProperty().addListener((obs, old, sel) -> toggleAccountType(sel));
         toggleAccountType(cmbRole.getSelectionModel().getSelectedItem());
 
-        // Ensure demo data is present
+
         UserRepository.cargarUsuariosDePrueba();
     }
 
