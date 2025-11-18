@@ -16,7 +16,7 @@ public class Cashier {
         public static Result error(String msg) { return new Result(false, msg); }
     }
 
-    // New account-based operations
+
     public static Result deposit(BankAccount account, double amount) {
         if (account == null) return Result.error("Cuenta no válida");
         if (amount <= 0) return Result.error("El monto debe ser mayor a 0");

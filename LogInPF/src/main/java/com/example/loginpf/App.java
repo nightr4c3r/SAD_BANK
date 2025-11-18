@@ -12,7 +12,7 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("LogIn.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 600, 600);
-        // Apply global stylesheet to ensure consistent readable theming across all views
+
         String css = App.class.getResource("styles.css").toExternalForm();
         if (!scene.getStylesheets().contains(css)) {
             scene.getStylesheets().add(css);

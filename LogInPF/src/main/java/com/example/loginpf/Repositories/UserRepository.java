@@ -6,27 +6,27 @@ import javafx.collections.ObservableList;
 
 public class UserRepository {
 
-    // Collections per role
+
     private static final ObservableList<Client> clients = FXCollections.observableArrayList();
     private static final ObservableList<Admin> admins = FXCollections.observableArrayList();
     private static final ObservableList<StaffCashier> cashiers = FXCollections.observableArrayList();
 
-    // Legacy compatibility names
+
     public static ObservableList<Client> getUsuarios() { return clients; }
     public static ObservableList<Client> obtenerTodosLosUsuarios() { return clients; }
     public static ObservableList<Admin> obtenerTodosLosAdmins() { return admins; }
     public static ObservableList<StaffCashier> obtenerTodosLosCashiers() { return cashiers; }
 
-    // ---- Adders ----
+
     public static void agregarCliente(Client cliente) { clients.add(cliente); }
     public static void agregarAdmin(Admin admin) { admins.add(admin); }
     public static void agregarCashier(StaffCashier cashier) { cashiers.add(cashier); }
 
-    // Safe adders (validate uniqueness)
+
     public static boolean agregarClienteSiUnico(Client cliente) {
         if (cliente == null) return false;
         if (existeUsuario(cliente.getUsername())) return false;
-        // Ensure account number unique across clients' primary accounts
+
         boolean accountTaken = clients.stream().anyMatch(c -> cliente.getAccount().equalsIgnoreCase(c.getAccount()));
         if (accountTaken) return false;
         clients.add(cliente);
@@ -40,10 +40,10 @@ public class UserRepository {
         return true;
     }
 
-    // Legacy method kept for controllers that add clients
+
     public static void agregarUsuario(Client usuario) { agregarCliente(usuario); }
 
-    // ---- Removal ----
+
     public static boolean eliminarCliente(String username) {
         return clients.removeIf(c -> c.getUsername().equalsIgnoreCase(username));
     }
@@ -54,16 +54,16 @@ public class UserRepository {
         return admins.removeIf(a -> a.getUsername().equalsIgnoreCase(username));
     }
 
-    // ---- Updates ----
+
     public static boolean actualizarCliente(String originalUsername, Client updated) {
         if (originalUsername == null || updated == null) return false;
         Client existing = obtenerUsuario(originalUsername);
         if (existing == null) return false;
-        // If username changes, ensure it's still unique
+
         if (!originalUsername.equalsIgnoreCase(updated.getUsername()) && existeUsuario(updated.getUsername())) {
             return false;
         }
-        // Apply changes
+
         existing.setUsername(updated.getUsername());
         existing.setPassword(updated.getPassword());
         existing.setName(updated.getName());
@@ -86,7 +86,7 @@ public class UserRepository {
         return true;
     }
 
-    // ---- Promote to Admin (multi-role allowed by default) ----
+
     public static boolean promoverClienteAAdmin(String username) {
         Client c = obtenerUsuario(username);
         if (c == null) return false;
@@ -102,7 +102,7 @@ public class UserRepository {
         return true;
     }
 
-    // ---- Validators ----
+
     public static boolean validarCliente(String username, String password) {
         return clients.stream().anyMatch(u -> u.getUsername().equals(username) && u.getPassword().equals(password));
     }
@@ -113,12 +113,12 @@ public class UserRepository {
         return cashiers.stream().anyMatch(c -> c.getUsername().equals(username) && c.getPassword().equals(password));
     }
 
-    // Legacy method used by LogInController (client validation)
+
     public static boolean validarCredenciales(String username, String password) {
         return validarCliente(username, password);
     }
 
-    // ---- Queries ----
+
     public static boolean existeUsuario(String username) {
         boolean existsInClients = clients.stream().anyMatch(u -> u.getUsername().equalsIgnoreCase(username));
         boolean existsInAdmins = admins.stream().anyMatch(a -> a.getUsername().equalsIgnoreCase(username));
@@ -126,7 +126,7 @@ public class UserRepository {
         return existsInClients || existsInAdmins || existsInCashiers;
     }
 
-    // Find owner client by account number (searches across all accounts)
+
     public static Client buscarPorCuenta(String numeroCuenta) {
         for (Client c : clients) {
             for (BankAccount a : c.getAccounts()) {
@@ -136,7 +136,7 @@ public class UserRepository {
         return null;
     }
 
-    // Find BankAccount by number
+
     public static BankAccount buscarCuenta(String numeroCuenta) {
         for (Client c : clients) {
             for (BankAccount a : c.getAccounts()) {
@@ -146,7 +146,7 @@ public class UserRepository {
         return null;
     }
 
-    // Find account owner by account number
+
     public static Client buscarPropietario(String numeroCuenta) {
         return buscarPorCuenta(numeroCuenta);
     }
@@ -168,9 +168,9 @@ public class UserRepository {
 
     public static int getCantidadUsuarios() { return clients.size(); }
 
-    // ---- Seeding ----
+
     public static void cargarUsuariosDePrueba() {
-        // Ensure demo Admin and Cashier
+
         ensureAdmin(new Admin("admin", "admin"));
         ensureCashier(new StaffCashier("cashier", "cashier"));
 
